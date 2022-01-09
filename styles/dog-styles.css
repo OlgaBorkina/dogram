@@ -33,7 +33,6 @@ body {
     padding: 0;
     padding-top: 2.5vh;
 }
-
 .hidden .thumbnails-list {
     
     max-height: 100%;
@@ -43,15 +42,18 @@ body {
     max-width: 35vh;
     align-items: center;
     justify-content: center;
-    
-    
-    
+       
 }
 
+.hidden.main-content {
+    display: flex;
+    justify-content: center;
+    /* max-height: 80vh; */
+}
 .thumbnails-image {
     width: var(--thumbnails-image-width);
     height: var(--thumbnails-image-height);
-    display:block
+    display:block;
 }
 .details-title {
     background-color: cornsilk;
@@ -71,6 +73,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 3s cubic-bezier(0.1, 2, 0.9, 1);
 }
 
 .hidden .details-container {
@@ -101,11 +104,11 @@ body {
     max-width: var(--thumbnails-image-width);
     min-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
     border-radius: 25%;
-    overflow: hidden
+    overflow: hidden;
 }
 .selected.thumbnails-item{
     border-radius: 0;
-    border: 3px solid green;
+    border: 1.5px solid rgb(250, 6, 6);
 
 }
 .thumbnails-anchor {
@@ -123,6 +126,14 @@ body {
 body, html {
     height: 100%
 }
+.thumbnails-item:hover {
+    transform: scale(1.1);
+    transition: 50ms;
+}
+.is-tiny {
+    transform: scale(0.001);
+    transition: 0s;
+}
 @media (min-width: 568px){
     :root {
         --thumbnails-image-width: 12vw;
@@ -133,27 +144,34 @@ body, html {
         flex-direction: column;
         flex-wrap: nowrap;
         order: -1;
-        max-height: 70vh;
+        max-height: 75vh;
+        min-width: 30vh;
         justify-content: flex-start;
         padding: 0;
         margin: 0;
-       
     }
+    .hidden .thumbnails-list {
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-around;
+    }
+    
     .thumbnails-title {
-        
         font-size: 1rem;
-        
     }
     .thumbnails-item {
-      
         margin-left:0;
-       
         overflow:hidden;
-       
         margin-top:0;
+        /* margin-right: 2%;
+       margin-left: 15%; */
+
     }
     .thumbnails-item+.thumbnails-item {
         margin-top: 2vh;
+    }
+    .hidden .thumbnails-item{
+        margin-top: 2vh; 
     }
     
     .details-image {
@@ -176,7 +194,7 @@ body, html {
         
     }
     body {
-       
+        flex-direction: column;       
         justify-content: space-between;
         margin: 0;
     }
